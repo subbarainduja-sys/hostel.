@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% block body %}<h4>Face Attendance</h4>
+<div class="card p-3 text-center"><small class="text-muted mb-2">Face <b>detection/capture</b> only - not biometric identity recognition.</small>
+<video id="v" playsinline muted class="mx-auto"></video><canvas id="c" class="d-none mx-auto" style="max-width:100%;border-radius:16px"></canvas>
+<div class="mt-3 d-flex gap-2 justify-content-center flex-wrap">
+<button id="b-start" class="btn btn-primary" onclick="startCam()">Start Camera</button>
+<button id="b-cap" class="btn btn-success d-none" onclick="capture()">Capture Face</button>
+<button id="b-retake" class="btn btn-warning d-none" onclick="retake()">Retake</button>
+<button id="b-submit" class="btn btn-primary d-none" onclick="submitFace()">Submit Attendance</button></div>
+<div id="result" class="mt-3 fw-bold"></div></div>{% endblock %}
+{% block scripts %}<script src="{{ url_for('static',filename='js/face.js') }}"></script>{% endblock %}

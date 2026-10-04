@@ -1,0 +1,13 @@
+:root{--p:#2563EB;--s:#0F172A;--ok:#16A34A;--warn:#F59E0B;--bad:#DC2626}
+body{background:#F8FAFC;font-family:Inter,system-ui,sans-serif;color:var(--s)}
+.sidebar{width:240px;background:var(--s);min-height:100vh;position:fixed;padding:1.2rem}
+.sidebar a{display:block;color:#cbd5e1;padding:.65rem .9rem;border-radius:10px;text-decoration:none;margin-bottom:4px}
+.sidebar a:hover{background:#1e293b;color:#fff}
+.main{margin-left:240px;padding:1.5rem}
+.card{border:0;border-radius:16px;box-shadow:0 2px 12px rgba(15,23,42,.07);animation:up .4s}
+.stat{font-size:1.8rem;font-weight:700}
+.btn-primary{background:var(--p);border:0;border-radius:10px}
+video,#qrimg{width:100%;max-width:480px;border-radius:16px;background:#000}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+@media(max-width:768px){.sidebar{position:static;width:100%;min-height:0;display:flex;flex-wrap:wrap;gap:4px;padding:.6rem}
+.sidebar h5{width:100%}.sidebar a{padding:.4rem .7rem;font-size:.85rem}.main{margin:0;padding:1rem}}

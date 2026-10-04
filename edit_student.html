@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block body %}<h4>Edit {{s.username}}</h4><div class="card p-3"><form method="post" class="row g-2">
+{% for k,l in [('name','Name'),('email','Email'),('phone','Phone'),('department','Department'),('block','Block'),('room','Room'),('parent_name','Guardian Name'),('parent_phone','Guardian Phone')] %}
+<div class="col-12 col-md-6"><label class="small text-muted">{{l}}</label><input name="{{k}}" value="{{ s[k] or '' }}" class="form-control"></div>{% endfor %}
+<div class="col-12 col-md-6"><label class="small text-muted">New password (optional)</label><input name="password" type="password" class="form-control"></div>
+<div class="col-12"><button class="btn btn-primary">Save</button> <a href="/admin/students" class="btn btn-light">Cancel</a></div></form></div>{% endblock %}

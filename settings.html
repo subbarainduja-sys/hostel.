@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block body %}<h4>Settings</h4><div class="row g-3"><div class="col-md-6"><div class="card p-3"><h6>Change Password</h6>
+<form method="post"><input name="old" type="password" class="form-control mb-2" placeholder="Current password" required>
+<input name="new" type="password" class="form-control mb-2" placeholder="New password (min 6)" required><button class="btn btn-primary">Update</button></form></div></div>
+<div class="col-md-6"><div class="card p-3"><h6>System</h6>QR validity: {{ttl}} seconds (set in config.py)<br>Face mode: detection only, not identity recognition.</div></div></div>{% endblock %}

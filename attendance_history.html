@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block body %}<h4>Attendance History</h4><div class="card p-3 mb-3">
+<div>Present: {{present}} &middot; Absent: {{absent}} &middot; Attendance: {{pct}}%</div>
+<div class="progress mt-2"><div class="progress-bar bg-success" style="width:{{pct}}%"></div></div></div>
+<div class="card p-3 table-responsive"><table class="table"><tr><th>Date</th><th>Time</th><th>Method</th><th>Status</th></tr>
+{% for a in recs %}<tr><td>{{a.date}}</td><td>{{a.time}}</td><td>{{a.method}}</td><td>{{a.status}}</td></tr>{% endfor %}</table></div>{% endblock %}

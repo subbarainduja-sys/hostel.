@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% block body %}<h4>Leave Request</h4><div class="card p-3 mb-3"><form method="post" class="row g-2">
+<div class="col-12 col-md-3"><select name="leave_type" class="form-select"><option>Home Visit</option><option>Medical</option><option>Emergency</option><option>Other</option></select></div>
+<div class="col-6 col-md-3"><input type="date" name="from_date" class="form-control" required></div><div class="col-6 col-md-3"><input type="date" name="to_date" class="form-control" required></div>
+<div class="col-12 col-md-3"><button class="btn btn-primary w-100">Submit</button></div>
+<div class="col-12"><textarea name="reason" class="form-control" placeholder="Reason" required></textarea></div></form></div>
+<div class="card p-3 table-responsive"><table class="table"><tr><th>Type</th><th>From</th><th>To</th><th>Status</th><th>Remark</th></tr>
+{% for l in leaves %}<tr><td>{{l.leave_type}}</td><td>{{l.from_date}}</td><td>{{l.to_date}}</td><td><span class="badge bg-{{ {'Pending':'warning','Approved':'success','Rejected':'danger'}[l.status] }}">{{l.status}}</span></td><td>{{l.remark or ''}}</td></tr>{% endfor %}</table></div>{% endblock %}

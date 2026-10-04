@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block body %}<h4>QR Attendance</h4><div class="card p-3 text-center">
+<video id="v" playsinline muted class="mx-auto"></video><button class="btn btn-primary mt-3" onclick="startScan()">Start Scanner</button>
+<div id="result" class="mt-3"></div></div>{% endblock %}
+{% block scripts %}<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script><script src="{{ url_for('static',filename='js/qr.js') }}"></script>{% endblock %}

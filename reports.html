@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block body %}<h4>Attendance Reports</h4>
+<form class="row g-2 mb-3"><div class="col-6 col-md-3"><input type="date" name="date" value="{{request.args.date}}" class="form-control"></div>
+<div class="col-6 col-md-3"><input name="name" placeholder="Student" value="{{request.args.name}}" class="form-control"></div>
+<div class="col-6 col-md-2"><select name="method" class="form-select"><option value="">Method</option><option>QR</option><option>FACE</option><option>MANUAL</option></select></div>
+<div class="col-6 col-md-2"><select name="status" class="form-select"><option value="">Status</option><option>PRESENT</option><option>ABSENT</option><option>LATE</option></select></div>
+<div class="col-12 col-md-2 d-flex gap-1"><button class="btn btn-primary">Filter</button>
+<a class="btn btn-outline-success" href="{{ url_for('admin_reports',export='csv',**request.args) }}">CSV</a><button type="button" class="btn btn-outline-secondary" onclick="print()">Print</button></div></form>
+<div class="card p-3 table-responsive"><table class="table"><tr><th>ID</th><th>Name</th><th>Date</th><th>Time</th><th>Room</th><th>Method</th><th>Status</th></tr>
+{% for a in rows %}<tr><td>{{a.user.username}}</td><td>{{a.user.name}}</td><td>{{a.date}}</td><td>{{a.time}}</td><td>{{a.user.room}}</td><td>{{a.method}}</td><td><span class="badge bg-success">{{a.status}}</span></td></tr>{% endfor %}</table></div>{% endblock %}

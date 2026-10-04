@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% block body %}<h4>Rooms</h4>
+<div class="card p-3 mb-3"><form method="post" class="row g-2">
+<div class="col-6 col-md-3"><input name="number" class="form-control" placeholder="Room No" required></div>
+<div class="col-6 col-md-3"><input name="block" class="form-control" placeholder="Block"></div>
+<div class="col-6 col-md-2"><input name="floor" type="number" class="form-control" placeholder="Floor"></div>
+<div class="col-6 col-md-2"><input name="capacity" type="number" min="1" class="form-control" placeholder="Capacity"></div>
+<div class="col-12 col-md-2"><button class="btn btn-primary w-100">Add Room</button></div></form></div>
+<div class="row g-3">{% for r,occ in rooms %}<div class="col-12 col-md-6 col-xl-3"><div class="card p-3">
+<h6>Room {{r.number}} <small class="text-muted">Block {{r.block}} &middot; Floor {{r.floor}}</small></h6>
+Capacity: {{r.capacity}} &middot; Occupied: {{occ}} &middot; Available: {{[r.capacity-occ,0]|max}}
+<div class="progress my-2"><div class="progress-bar {{ 'bg-danger' if occ>=r.capacity else 'bg-success' }}" style="width:{{ (occ/r.capacity*100)|round if r.capacity else 0 }}%"></div></div>
+<span class="badge {{ 'bg-danger' if occ>=r.capacity else 'bg-success' }} align-self-start">{{ 'Full' if occ>=r.capacity else 'Available' }}</span>
+<form method="post" action="/admin/rooms/delete/{{r.id}}" class="mt-2" onsubmit="return confirm('Delete room?')"><button class="btn btn-sm btn-outline-danger">Delete</button></form></div></div>{% endfor %}</div>{% endblock %}
